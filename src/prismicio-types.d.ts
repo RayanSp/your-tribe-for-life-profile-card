@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FirstPageDocumentDataSlicesSlice = never;
+type FirstPageDocumentDataSlicesSlice = NavbarSlice;
 
 /**
  * Content for first page documents
@@ -71,6 +71,48 @@ export type FirstPageDocument<Lang extends string = string> = prismic.PrismicDoc
 
 export type AllDocumentTypes = FirstPageDocument;
 
+/**
+ * Primary content in *Navbar → Items*
+ */
+export interface NavbarSliceDefaultItem {
+	/**
+	 * Navbar field in *Navbar → Items*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navbar.items[].navbar
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	navbar: prismic.SelectField<'1' | '2'>;
+}
+
+/**
+ * Default variation for Navbar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavbarSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	Simplify<NavbarSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Navbar*
+ */
+type NavbarSliceVariation = NavbarSliceDefault;
+
+/**
+ * Navbar Shared Slice
+ *
+ * - **API ID**: `navbar`
+ * - **Description**: Navbar
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NavbarSlice = prismic.SharedSlice<'navbar', NavbarSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -84,7 +126,11 @@ declare module '@prismicio/client' {
 			FirstPageDocument,
 			FirstPageDocumentData,
 			FirstPageDocumentDataSlicesSlice,
-			AllDocumentTypes
+			AllDocumentTypes,
+			NavbarSlice,
+			NavbarSliceDefaultItem,
+			NavbarSliceVariation,
+			NavbarSliceDefault
 		};
 	}
 }

@@ -1,15 +1,10 @@
-import { error } from '@sveltejs/kit'
+import { createClient } from '$lib/prismicio';
 
-import createClient from '$lib/prismicio'
+export const prerender = true;
 
-export async function load({ fetch, request }) {
-  const homepageUID = 'homepage'  // Update for the UID of your homepage
-  const client = createClient({ fetch, request })
-  const document = await client.getByUID('first page', rayan-spallUID)
-
-  if (document) {
-    return { document }
-  }
-
-  error(404, 'Not found')
+/** @type {import('./$types').PageServerLoad} */
+export async function load() {
+    const client = createClient();
+    const { data } = await client.getByUID('first page', "rayan-spall");
+    return { page: data }
 }

@@ -1,5 +1,5 @@
 <script>
-	/** @type {import("@prismicio/client").Content.NavbarSlice} */
+	/** @type {import("@prismicio/client").Content.NavBarSlice} */
 	export let slice;
 </script>
 

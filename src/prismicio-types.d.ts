@@ -4,50 +4,50 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FirstPageDocumentDataSlicesSlice = NavbarSlice;
+type HomeDocumentDataSlicesSlice = NavBarSlice;
 
 /**
- * Content for first page documents
+ * Content for Home documents
  */
-interface FirstPageDocumentData {
+interface HomeDocumentData {
 	/**
-	 * Slice Zone field in *first page*
+	 * Slice Zone field in *Home*
 	 *
 	 * - **Field Type**: Slice Zone
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: first_page.slices[]
+	 * - **API ID Path**: home.slices[]
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#slices
 	 */
-	slices: prismic.SliceZone<FirstPageDocumentDataSlicesSlice>
+	slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
 	/**
-	 * Meta Description field in *first page*
+	 * Meta Description field in *Home*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: A brief summary of the page
-	 * - **API ID Path**: first_page.meta_description
+	 * - **API ID Path**: home.meta_description
 	 * - **Tab**: SEO & Metadata
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */;
 	meta_description: prismic.KeyTextField;
 
 	/**
-	 * Meta Image field in *first page*
+	 * Meta Image field in *Home*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: first_page.meta_image
+	 * - **API ID Path**: home.meta_image
 	 * - **Tab**: SEO & Metadata
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	meta_image: prismic.ImageField<never>;
 
 	/**
-	 * Meta Title field in *first page*
+	 * Meta Title field in *Home*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: A title of the page used for social media and search engines
-	 * - **API ID Path**: first_page.meta_title
+	 * - **API ID Path**: home.meta_title
 	 * - **Tab**: SEO & Metadata
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
@@ -55,63 +55,63 @@ interface FirstPageDocumentData {
 }
 
 /**
- * first page document from Prismic
+ * Home document from Prismic
  *
- * - **API ID**: `first_page`
+ * - **API ID**: `home`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type FirstPageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-	Simplify<FirstPageDocumentData>,
-	'first_page',
+export type HomeDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<HomeDocumentData>,
+	'home',
 	Lang
 >;
 
-export type AllDocumentTypes = FirstPageDocument;
+export type AllDocumentTypes = HomeDocument;
 
 /**
- * Primary content in *Navbar → Items*
+ * Primary content in *NavBar → Items*
  */
-export interface NavbarSliceDefaultItem {
+export interface NavBarSliceDefaultItem {
 	/**
-	 * Navbar field in *Navbar → Items*
+	 * navbar field in *NavBar → Items*
 	 *
 	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: navbar.items[].navbar
+	 * - **API ID Path**: nav_bar.items[].navbar
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	navbar: prismic.SelectField<'1' | '2'>;
 }
 
 /**
- * Default variation for Navbar Slice
+ * Default variation for NavBar Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NavbarSliceDefault = prismic.SharedSliceVariation<
+export type NavBarSliceDefault = prismic.SharedSliceVariation<
 	'default',
 	Record<string, never>,
-	Simplify<NavbarSliceDefaultItem>
+	Simplify<NavBarSliceDefaultItem>
 >;
 
 /**
- * Slice variation for *Navbar*
+ * Slice variation for *NavBar*
  */
-type NavbarSliceVariation = NavbarSliceDefault;
+type NavBarSliceVariation = NavBarSliceDefault;
 
 /**
- * Navbar Shared Slice
+ * NavBar Shared Slice
  *
- * - **API ID**: `navbar`
- * - **Description**: Navbar
+ * - **API ID**: `nav_bar`
+ * - **Description**: NavBar
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NavbarSlice = prismic.SharedSlice<'navbar', NavbarSliceVariation>;
+export type NavBarSlice = prismic.SharedSlice<'nav_bar', NavBarSliceVariation>;
 
 declare module '@prismicio/client' {
 	interface CreateClient {
@@ -123,14 +123,14 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
-			FirstPageDocument,
-			FirstPageDocumentData,
-			FirstPageDocumentDataSlicesSlice,
+			HomeDocument,
+			HomeDocumentData,
+			HomeDocumentDataSlicesSlice,
 			AllDocumentTypes,
-			NavbarSlice,
-			NavbarSliceDefaultItem,
-			NavbarSliceVariation,
-			NavbarSliceDefault
+			NavBarSlice,
+			NavBarSliceDefaultItem,
+			NavBarSliceVariation,
+			NavBarSliceDefault
 		};
 	}
 }

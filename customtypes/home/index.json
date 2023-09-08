@@ -1,6 +1,6 @@
 {
-	"id": "first_page",
-	"label": "first page",
+	"id": "home",
+	"label": "Home",
 	"format": "page",
 	"repeatable": true,
 	"status": true,
@@ -17,7 +17,7 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
-						"navbar": {
+						"nav_bar": {
 							"type": "SharedSlice"
 						}
 					}

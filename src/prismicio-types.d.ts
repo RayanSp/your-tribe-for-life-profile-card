@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = NavBarSlice;
+type HomeDocumentDataSlicesSlice = NameSlice | ImageSlice;
 
 /**
  * Content for Home documents
@@ -72,46 +72,88 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = HomeDocument;
 
 /**
- * Primary content in *NavBar → Items*
+ * Primary content in *Image → Primary*
  */
-export interface NavBarSliceDefaultItem {
+export interface ImageSliceDefaultPrimary {
 	/**
-	 * navbar field in *NavBar → Items*
+	 * image field in *Image → Primary*
 	 *
-	 * - **Field Type**: Select
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: nav_bar.items[].navbar
-	 * - **Documentation**: https://prismic.io/docs/field#select
+	 * - **API ID Path**: image.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	navbar: prismic.SelectField<'1' | '2'>;
+	image: prismic.ImageField<never>;
 }
 
 /**
- * Default variation for NavBar Slice
+ * Default variation for Image Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NavBarSliceDefault = prismic.SharedSliceVariation<
+export type ImageSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
-	Simplify<NavBarSliceDefaultItem>
+	Simplify<ImageSliceDefaultPrimary>,
+	never
 >;
 
 /**
- * Slice variation for *NavBar*
+ * Slice variation for *Image*
  */
-type NavBarSliceVariation = NavBarSliceDefault;
+type ImageSliceVariation = ImageSliceDefault;
 
 /**
- * NavBar Shared Slice
+ * Image Shared Slice
  *
- * - **API ID**: `nav_bar`
- * - **Description**: NavBar
+ * - **API ID**: `image`
+ * - **Description**: Image
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type NavBarSlice = prismic.SharedSlice<'nav_bar', NavBarSliceVariation>;
+export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
+
+/**
+ * Primary content in *Name → Primary*
+ */
+export interface NameSliceDefaultPrimary {
+	/**
+	 * name field in *Name → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: name.primary.name
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	name: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Name Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NameSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NameSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Name*
+ */
+type NameSliceVariation = NameSliceDefault;
+
+/**
+ * Name Shared Slice
+ *
+ * - **API ID**: `name`
+ * - **Description**: Name
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NameSlice = prismic.SharedSlice<'name', NameSliceVariation>;
 
 declare module '@prismicio/client' {
 	interface CreateClient {
@@ -127,10 +169,14 @@ declare module '@prismicio/client' {
 			HomeDocumentData,
 			HomeDocumentDataSlicesSlice,
 			AllDocumentTypes,
-			NavBarSlice,
-			NavBarSliceDefaultItem,
-			NavBarSliceVariation,
-			NavBarSliceDefault
+			ImageSlice,
+			ImageSliceDefaultPrimary,
+			ImageSliceVariation,
+			ImageSliceDefault,
+			NameSlice,
+			NameSliceDefaultPrimary,
+			NameSliceVariation,
+			NameSliceDefault
 		};
 	}
 }

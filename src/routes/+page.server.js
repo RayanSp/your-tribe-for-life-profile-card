@@ -5,6 +5,6 @@ export const prerender = true;
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
     const client = createClient();
-    const { data } = await client.getByUID('home', 'rayan-spall');
-    return { page: data }
+    const document = await client.getByUID('home', 'rayan-spall');
+    return document.data
 }

@@ -4,35 +4,27 @@
 </script>
 
 <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	<img src={slice.primary.image.url} alt="">
+	<img src={slice.primary.image.url} alt="" />
 </section>
 
 <article>
-	<p>
-		Student HvA
-	</p>
+	<p class="student">Student HvA</p>
 
-	<p>
-		2005
-	</p>
+	<p class="geboorte">2005</p>
 
-	<p class="github">
-		GitHub
-	</p>
+	<p class="github">GitHub</p>
 
-	<p class="geboorte">
-		Geboorteplaats
-	</p>
+	<p class="geboorteplaats">Geboorteplaats</p>
 </article>
 
-
-
-
 <style>
-
 	:root {
-		--primary:black;
+		--primary: black;
 		--secondary: orange;
+	}
+
+	.geboorteplaats {
+		width: 24rem;
 	}
 
 	section {
@@ -54,10 +46,28 @@
 		font-size: 20px;
 		text-align: center;
 	}
-	
-	.geboorte {
+
+	.geboorteplaats {
 		border-bottom: 8px solid var(--secondary);
 		width: 100%;
 		padding-bottom: 60px;
+	}
+
+	.geboorte:hover {
+		color: var(--secondary);
+	}
+
+	.github:hover {
+		color: var(--secondary);
+		cursor: pointer;
+		width: auto;
+	}
+
+	.geboorteplaats:hover {
+		color: var(--secondary);
+	}
+
+	.student:hover {
+		color: var(--secondary);
 	}
 </style>

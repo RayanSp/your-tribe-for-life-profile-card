@@ -34,6 +34,7 @@
 		align-items: center;
 		width: 20rem;
 		margin-left: 38%;
+		border-radius: 0px 0px 15px 15px;
 	}
 
 	.geboorteplaats {

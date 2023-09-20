@@ -24,7 +24,7 @@
 <style>
 	:root {
 		--primary: black;
-		--secondary: orange;
+		--secondary: rgb(240, 76, 76);
 	}
 
 	.card {

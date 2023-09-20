@@ -20,7 +20,7 @@
 
 	h1 {
 		text-align: center;
-		color: orange;
+		color: rgb(240, 76, 76);
 		margin-bottom: 0;
 		padding-bottom: 10px;
 		padding-top: 15px;

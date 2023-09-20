@@ -4,7 +4,7 @@
 	console.log(slice)
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+<section class="name-background" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 	<h1>{slice.primary.name[0].text}</h1>
 </section>
 
@@ -12,9 +12,19 @@
 
 <style>
 
+	.name-background {
+		background-color: black;
+		width: 20rem;
+		margin-left: 38%;
+	}
+
 	h1 {
 		text-align: center;
 		color: orange;
+		margin-bottom: 0;
+		padding-bottom: 10px;
+		padding-top: 15px;
+		
 	}
 
 </style>

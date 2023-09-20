@@ -19,6 +19,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "github": {
+          "type": "Link",
+          "config": {
+            "label": "github",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {}

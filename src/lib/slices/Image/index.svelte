@@ -16,7 +16,7 @@
 
 	<a href={slice.primary.github.url} class="github">GitHub</a>
 
-	<p class="geboorteplaats">Geboorteplaats</p>
+	<p class="geboorteplaats">Diemen-Zuid</p>
 </article>
 
 </section>
